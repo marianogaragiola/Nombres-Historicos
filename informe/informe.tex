@@ -1,0 +1,126 @@
+\documentclass[10pt,a4paper]{article}
+%\documentclass{book}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage[left=3cm,right=3cm,top=4cm,bottom=4cm]{geometry}
+
+%----------------------------------------------------------------------------------------------
+% TITLE PAGE
+%----------------------------------------------------------------------------------------------
+
+\newcommand{\titleGP}{\begingroup % Create the command for including the title page in the document
+\centering % Center all text
+\vspace*{\baselineskip} % White space at the top of the page
+
+\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} %Thick horizontal line
+\rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
+
+{\LARGE An\'alisis Exploratorio}\\[0.2\baselineskip] % Title
+
+\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} %Thin horizontal line
+\rule{\textwidth}{1.6pt}\\[\baselineskip] %Thick horizontal line
+
+\scshape %Small caps
+%Se puede escribir algo o no
+
+\vspace*{10\baselineskip}
+
+Autor \\[\baselineskip]
+{\LARGE Garagiola Mariano\par}
+
+
+\vspace*{1.5\baselineskip}
+{\itshape C\'ordoba \par}
+
+\vfill
+
+\endgroup}
+
+\begin{document}
+ \pagestyle{empty}
+ \titleGP
+ 
+ \newpage
+ 
+ En este informe presento un breve an\'alisis explorario del {\em dataframe:} {\em historico-nombre.csv}.
+ 
+El dataframe contiene los nombres registrados en el Registro Nacional de 
+las Personas agrupados por a\~no, desde el a\~no 1922 hasta el a\~no 2015. Quiero 
+mencionar que debido a la cantidad total de nombres registrados no pude realizar un 
+an\'alisis del conjunto completo debido a las limitaciones computacionales. El 
+an\'alisis que presento lo realic\'e con los primeros cinco millones de datos 
+(5432786 datos exactamente), de esta 
+forma, cubro el periodo temporal comprendido entre 1922 y 1988.
+
+Inici\'e contando la cantidad de personas registradas por a\~no en 
+el Registro Nacional de las Personas. El gr\'afico est\'a presentado en la figura 
+\ref{fig1}, donde se puede observar un crecimiento en el n\'umero de personas registradas 
+a medida que se avanza en el tiempo, mostrando un claro crecimiento en la poblaci\'on.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{../num_personas_por_anio.pdf}
+\end{center}
+\caption{\label{fig1} N\'umero de personas registradas por a\~no en el Registro 
+Nacional de las Pesonas.}
+\end{figure}
+
+\noindent Si bien, en general, se muestra un crecimiento en la cantidad de personas 
+registradas, hay algunos a\~nos en los cuales dicho n\'umero disminuye respecto al 
+a\~no anterior o bien no sigue con la tendencia, esto probablemente es debido a 
+condiciones pol\'iticas-sociales del pa\'is durante esos a\~nos.
+
+A continuaci\'on, decid\'i analizar la cantidad de nombres distintos registrados a lo 
+largo de los a\~nos. Dicho gr\'afico, figura \ref{fig2}, muestra que tambi\'en ha 
+aumentado la variedad de nombres a lo largo del tiempo, esta cantidad tiene un 
+comportamiento similar al mostrando en la figura \ref{fig1}. Nuevamente, hay a\~nos en 
+los cuales la cantidad de nombres distintos registrados no sigue la tendencia de los 
+a\~nos anteriores, como por ejemplo el a\~no 1980, pero \'esto no quiere decir que 
+haya disminuido la cantidad de personas registradas. Ser\'ia interesante poder tener 
+los registros de la cantidad de personas que nacieron en cada a\~no, de esa forma 
+ser\'ia posible estimar el porcentaje de personas nacidas en Argentina y as\'i tambi\'en 
+estimar el porcentaje de personas resgistradas que provienen de otros pa\'ises, ya que 
+hubo a\~nos en los cuales inmigraron un gran cantidad de personas.
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics[scale=0.3]{../num_nombres_por_anio.pdf}
+\end{center}
+\caption{\label{fig2} N\'umero de nombres distintos registradas por a\~no en el Registro 
+Nacional de las Pesonas.}
+\end{figure}
+
+Un hecho que me llam\'o la atenci\'on del {\em dataset} es que algunos nombres est\'an 
+formados por muchas palabras, por este motivo decid\'i determinar el n\'umero de 
+palabras que forma cada nombre. De esta forma, realic\'e el gr\'afico del n\'umero de 
+personas con una dada cantidad de palabras en su respectivo nombre, el gr\'afico se 
+puede ver en la figura \ref{fig3}. Como es de esperarse, la mayor cantidad de nombres est\'a 
+compuesto por dos palabras, pero hay un n\'umero considerable de nombres con una, tres y cuatro 
+palabras, lo cual es entendible. En el registro hay personas con m\'as de cinco palabras en el nombre, 
+si bien
+no est\'a prohibido tener m\'as de cinco palabras en el nombre no deja de ser extra\~no. En particular, 
+existen cuatro registros que contienen diez palabras en el nombre y dos registros que contienen once 
+palabras en el nombre. Viendo en detalle cada uno, encontr\'e que uno de los registros tiene el nombre:
+{\em Maria De La Concepcion Trinidad Maria Amalia Fernanda Felisa Ignacia Adelaida} y es del a\~no 1922, 
+lo que me hace dudar de que sea una misma persona. Lo mismo sucede con el segundo registro que posee 
+once palabras, el nombre es {\em Josina Livina Dolores Lucia Carmen Balduina Yolanda Maria Inmaculada 
+Gislena Javiera}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{../num_nombres.pdf}
+\end{center}
+\caption{\label{fig3} N\'umero de personas con un dado n\'umero de palabras en su 
+nombre.}
+\end{figure}
+
+A partir del {\em dataset} es posible determinar cu\'al fue el nombre m\'as usado en cada a\~no, por 
+ejemplo, Juan Carlos fue el nombre m\'as usado durante los a\~nos de 1933 al 1951. 
+
+\end{document}
